@@ -13,6 +13,7 @@ def createUser(username, password) -> Result:
         out = os.system(
             f'net localgroup "Remote Desktop Users" "{username}" /add')
         if out != 0:
+            deleteUser(username)
             return Error(code=123, message=ErrUserCreationFailed)
 
         return Success(MsgUserCreated)
@@ -65,4 +66,4 @@ def updatePassword(username, password) -> Result:
 
 if __name__ == "__main__":
     print("Server is running...")
-    serve('localhost', 5001)
+    serve('localhost', 9000)
