@@ -63,6 +63,9 @@ def updatePassword(username, password) -> Result:
     except:
         return Error(code=123, message=ErrUpdatePassword)
 
+@method
+def heartbeat() -> Result:
+    return Success("I'm alive!")
 
 if __name__ == "__main__":
     print("Server is running...")
