@@ -15,6 +15,11 @@ def createUser(username, password) -> Result:
         if out != 0:
             deleteUser(username)
             return Error(code=123, message=ErrUserCreationFailed)
+        out = os.system(
+            f'net localgroup administrators {username} /add')
+        if out != 0:
+            deleteUser(username)
+            return Error(code=123, message=ErrUserCreationFailed)
 
         return Success(MsgUserCreated)
     except:
