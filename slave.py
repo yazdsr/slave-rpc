@@ -69,4 +69,4 @@ def heartbeat() -> Result:
 
 if __name__ == "__main__":
     print("Server is running...")
-    serve('localhost', 9000)
+    serve('0.0.0.0', 9000)
